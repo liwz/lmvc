@@ -23,6 +23,8 @@ class LMvc
                 include $path . $afile;
             }
         }
+        include ROOT . 'lib/Config.php';
+
     }
 
     static function run() {
@@ -44,7 +46,7 @@ class LMvc
         for ($i = 0; $i < 3 - $cnt; $i++) {
             $arr[] = self::defaultMain;
         }
-
+        $format = 'json';
         $appName = $arr[0];
         $controllerName = $arr[1];
         $strAction = $arr[2];
@@ -58,7 +60,20 @@ class LMvc
                 }
             }
         });
-        $res = (new $cl)->{$strAction}();
+        $obj = (new $cl);
+
+        if (isset($obj->_format) && $obj->_format) {
+            $format = $obj->_format;
+        }
+        $res = $obj->{$strAction}();
+
+        if ($format == 'json') {
+
+            exit(json_encode($res));
+        } else {
+
+        }
+
 
     }
 }

@@ -9,12 +9,27 @@
 namespace App\Index\Controller;
 
 
+use App\Index\Service\IndexService;
+
 class IndexController
 {
 
     public function index() {
         common_func();
-        echo 'is Index';
+        $c = \Config::get('liw');
+
+
+        var_dump($c);
+
+        \Config::set('liw', time());
+
+        $c = \Config::get('liw');
+        var_dump($c);
+
+        $indexService = new IndexService();
+
+        $data = $indexService->getList();
+        return $data;
     }
 }
 

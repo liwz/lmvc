@@ -8,7 +8,7 @@
 
 
 function common_func() {
-    echo 'this is common fun';
+//    echo 'this is common fun';
 }
 
 
