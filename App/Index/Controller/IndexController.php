@@ -11,7 +11,7 @@ namespace App\Index\Controller;
 
 use App\Index\Service\IndexService;
 
-class IndexController
+class IndexController extends BaseController
 {
 
     public function index() {
@@ -19,12 +19,10 @@ class IndexController
         $c = \Config::get('liw');
 
 
-        var_dump($c);
 
         \Config::set('liw', time());
 
         $c = \Config::get('liw');
-        var_dump($c);
 
         $indexService = new IndexService();
 

@@ -68,9 +68,9 @@ class LMvc
         $res = $obj->{$strAction}();
 
         if ($format == 'json') {
-
             exit(json_encode($res));
         } else {
+
 
         }
 

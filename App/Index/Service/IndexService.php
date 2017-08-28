@@ -10,9 +10,7 @@
 namespace App\Index\Service;
 
 
-use App\Index\Controller\BaseController;
-
-class IndexService extends BaseController
+class IndexService
 {
 
 
