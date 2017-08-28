@@ -9,7 +9,6 @@
 
 class Config
 {
-
     static $conf = [];
 
     public static function get($key) {
@@ -23,9 +22,11 @@ class Config
         return isset(self::$conf[$key]) ? self::$conf[$key] : null;
     }
 
-
     public static function set($key, $val) {
-
+        $key = trim($key);
+        if (empty($key)) {
+            return null;
+        }
         self::$conf[$key] = $val;
         return true;
 
