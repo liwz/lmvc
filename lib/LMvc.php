@@ -47,6 +47,9 @@ class LMvc
             $arr[] = self::defaultMain;
         }
         $format = 'json';
+
+        $format = Config::get('_format') ?: $format;
+
         $appName = $arr[0];
         $controllerName = $arr[1];
         $strAction = $arr[2];
@@ -62,9 +65,9 @@ class LMvc
         });
         $obj = (new $cl);
 
-        if (isset($obj->_format) && $obj->_format) {
-            $format = $obj->_format;
-        }
+//        if (isset($obj->_format) && $obj->_format) {
+//            $format = $obj->_format;
+//        }
         $res = $obj->{$strAction}();
 
         if ($format == 'json') {

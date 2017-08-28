@@ -12,8 +12,6 @@ namespace App\Index\Controller;
 
 class BaseController
 {
-    public $_format = 'html';
-
     public function __construct() {
 
     }
