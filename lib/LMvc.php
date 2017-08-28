@@ -11,9 +11,23 @@ class LMvc
     const defaultMain = 'index';
 
 
+    private static function preload() {
+
+        $path = ROOT . 'App/Common/';
+        foreach (scandir($path) as $afile) {
+            if ($afile == '.' || $afile == '..') continue;
+            if (is_dir($path . $afile)) {
+                continue;
+            } else {
+
+                include $path . $afile;
+            }
+        }
+    }
+
     static function run() {
 
-
+        self::preload();
         $requestStr = $_SERVER['REQUEST_URI'];
 
         if (strtolower(substr($requestStr, 0, 10)) === '/index.php') {

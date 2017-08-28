@@ -13,6 +13,7 @@ class IndexController
 {
 
     public function index() {
+        common_func();
         echo 'is Index';
     }
 }
