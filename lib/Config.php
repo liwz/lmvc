@@ -17,7 +17,7 @@ class Config
             return null;
         }
         if (empty(self::$conf)) {
-            self::$conf = include ROOT . 'App/Common/conf/conf.php';
+            self::$conf = include_once ROOT . 'App/Common/conf/conf.php';
         }
         return isset(self::$conf[$key]) ? self::$conf[$key] : null;
     }

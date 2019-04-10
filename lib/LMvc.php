@@ -9,9 +9,11 @@
 class LMvc
 {
     const defaultMain = 'index';
+    const defaultRestfulFormat = 'json';
 
 
-    private static function preload() {
+    private static function preload()
+    {
 
         $path = ROOT . 'App/Common/';
         foreach (scandir($path) as $afile) {
@@ -20,14 +22,15 @@ class LMvc
                 continue;
             } else {
 
-                include $path . $afile;
+                include_once $path . $afile;
             }
         }
         include ROOT . 'lib/Config.php';
 
     }
 
-    static function run() {
+    static function run()
+    {
 
         self::preload();
         $requestStr = $_SERVER['REQUEST_URI'];
@@ -46,9 +49,7 @@ class LMvc
         for ($i = 0; $i < 3 - $cnt; $i++) {
             $arr[] = self::defaultMain;
         }
-        $format = 'json';
-
-        $format = Config::get('_format') ?: $format;
+        $format = Config::get('_format') ?: self::defaultRestfulFormat;
 
         $appName = $arr[0];
         $controllerName = $arr[1];
@@ -59,7 +60,7 @@ class LMvc
                 $file = str_replace('\\', '/', $class);
                 $file = ROOT . $file . '.php';
                 if (file_exists($file)) {
-                    include $file;
+                    include_once $file;
                 }
             }
         });
